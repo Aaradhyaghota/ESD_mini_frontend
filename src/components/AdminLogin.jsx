@@ -36,7 +36,7 @@ const AdminLogin = () => {
         } catch (err) {
 
             //console.log(err);
-            setError(err.response?.data || "An error occurred during login.");
+            setError(err.response?.data?.message || "An error occurred during login.");
             setSuccess(null);
         }
     };
