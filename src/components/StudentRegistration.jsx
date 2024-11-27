@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Alert, Container } from "react-bootstrap";
 import HttpUtils from "../utils/httpsutils";  // Utility to make API requests
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 const StudentRegistration = () => {
     const [firstName, setFirstName] = useState("");
@@ -20,34 +20,34 @@ const StudentRegistration = () => {
     const [placements, setPlacements] = useState([]);
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
-    const [IsAuthenticated, setIsAuthenticated] = useState(false);
-    const navigate = useNavigate();
+    //const [IsAuthenticated, setIsAuthenticated] = useState(false);
+    //const navigate = useNavigate();
 
     useEffect(() => {
-        //Fetch all domains, specializations, and placements
-        const validateToken = async () => {
-            try {
-                const tokenToValidate = localStorage.getItem("authToken");
+        // Fetch all domains, specializations, and placements
+        // const validateToken = async () => {
+        //     try {
+        //         const tokenToValidate = localStorage.getItem("authToken");
 
-                if (!tokenToValidate) {
-                    setIsAuthenticated(false);
-                    navigate("/");
-                    return;
-                }
-                const res = await axios.post("http://localhost:8080/students/validate", {}, {
-                    headers: {
-                        'Authorization': tokenToValidate
-                    }
-                })
-                if (res === false) setIsAuthenticated(true);
-                else {
-                    navigate("/");
-                }
-            }
-            catch (err) {
-                console.log(err);
-            }
-        }
+        //         if (!tokenToValidate) {
+        //             setIsAuthenticated(false);
+        //             navigate("/");
+        //             return;
+        //         }
+        //         const res = await axios.post("http://localhost:8080/students/validate", {}, {
+        //             headers: {
+        //                 'Authorization': tokenToValidate
+        //             }
+        //         })
+        //         if (res === false) setIsAuthenticated(true);
+        //         else {
+        //             navigate("/");
+        //         }
+        //     }
+        //     catch (err) {
+        //         console.log(err);
+        //     }
+        // }
 
         const fetchDomains = async () => {
             try {
@@ -80,7 +80,7 @@ const StudentRegistration = () => {
         fetchSpecializations();
         fetchPlacements();
 
-        validateToken();
+        //validateToken();
     }, []);
 
     const handleSubmit = async (e) => {
@@ -118,6 +118,7 @@ const StudentRegistration = () => {
             // alert(response);
         } catch (err) {
             const errorMessage = err.response?.data?.message || "Error registering student.";
+
             setError(errorMessage);
         }
     };
