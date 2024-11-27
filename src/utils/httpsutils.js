@@ -39,8 +39,6 @@ const getPlacements = async () => {
     return await apiRequest("/students/placement", "GET");
 };
 
-//   export default { getDomains, getSpecializations, getPlacements };
-
 const HttpUtils = { loginAdmin, getDomains, getSpecializations, getPlacements };
 
 export default HttpUtils;
