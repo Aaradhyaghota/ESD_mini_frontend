@@ -9,8 +9,15 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<AdminLogin />} />
-        <Route path="/register" element={<StudentRegistration />} />
-
+        {/* <Route path="/register" element={<StudentRegistration />} /> */}
+        <Route
+          path="/register"
+          element={
+            <ProtectedRoute>
+              <StudentRegistration />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
